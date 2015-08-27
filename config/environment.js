@@ -4,8 +4,13 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'iron-twitter',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: 'https://rt-twitter.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
+    torii: {
+      sessionServiceName: 'session'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
