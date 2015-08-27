@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   firebase: Ember.inject.service('firebase'),
 
   actions: {
-    signup(email, password) {
+    signup(username, email, password) {
       var firebase = this.get('firebase');
 
       firebase.createUser({email, password}, (err, data) => {
@@ -12,9 +12,18 @@ export default Ember.Route.extend({
           return console.log(err);
         }
 
-        alert('User created now login');
+        this.get('session').open('firebase', {
+          provider: 'password',
+          email,
+          password
+        }).then((data) => {
+          data.currentUser.set('username', username);
 
-        this.transitionTo('login');
+          data.currentUser.save().then(() => {
+            this.transitionTo('login');
+          });
+        });
+
       });
     }
   }

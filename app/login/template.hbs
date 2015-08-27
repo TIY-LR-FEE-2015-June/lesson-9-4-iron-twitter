@@ -8,6 +8,9 @@
   <input type="submit" value="Login">
 </form>
 
-<h3>Logged In User</h3>
+{{#if session.currentUser}}
+  <h3>Logged In User</h3>
 
-{{session.currentUser.email}}
+  <p><strong>Email: </strong>{{session.currentUser.email}}</p>
+  <p><strong>Username: </strong>{{session.currentUser.username}}</p>
+{{/if}}

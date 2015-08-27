@@ -27,6 +27,7 @@ export default ToriiFirebaseAdapter.extend({
           });
 
           user.save().then(() => {
+            console.log('create user');
             resolve({
               provider: authentication.provider,
               uid: authentication.uid,

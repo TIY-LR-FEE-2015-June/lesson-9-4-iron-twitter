@@ -1,6 +1,9 @@
-<form {{action 'signup' username password on='submit'}}>
+<form {{action 'signup' username email password on='submit'}}>
   <label for="username">Username</label>
   {{input value=username id='username'}}
+
+  <label for="email">Email</label>
+  {{input value=email id='email'}}
 
   <label for="password">Password</label>
   {{input value=password id='password' type='password'}}
