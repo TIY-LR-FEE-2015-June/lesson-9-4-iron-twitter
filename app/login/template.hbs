@@ -1,11 +1,15 @@
-<form {{action 'login' username password on='submit'}}>
-  <label for="username">Username</label>
-  {{input value=username id='username'}}
+<form class="container" {{action 'login' username password on='submit'}}>
+  <div class="">
+    <fieldset>
+      <legend>Login</legend>
 
-  <label for="password">Password</label>
-  {{input value=password id='password' type='password'}}
+      {{md-input controlType="text" label="Username" placeholder="Username" value=username}}
 
-  <input type="submit" value="Login">
+      {{md-input controlType="password" label="Password" placeholder="Password" value=password}}
+
+      <input class="btn btn-primary" type="submit" value="Login">
+    </fieldset>
+  </div>
 </form>
 
 {{#if session.currentUser}}

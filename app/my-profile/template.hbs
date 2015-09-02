@@ -9,5 +9,7 @@
 </form>
 
 {{#each model.posts as |post|}}
-  <p>{{post.content}}</p>
+  {{#unless post.isNew}}
+    <p>{{post.content}}</p>
+  {{/unless}}
 {{/each}}
