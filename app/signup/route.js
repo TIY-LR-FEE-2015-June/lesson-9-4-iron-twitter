@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
   firebase: Ember.inject.service('firebase'),
 
   actions: {
@@ -12,14 +13,13 @@ export default Ember.Route.extend({
           return console.log(err);
         }
 
-        this.get('session').open('firebase', {
-          provider: 'password',
+        this.get('session').authenticate('authenticator:firebase', {
           email,
           password
         }).then((data) => {
-          data.currentUser.set('username', username);
+          this.session.get('currentUser').set('username', username);
 
-          data.currentUser.save().then(() => {
+          this.session.get('currentUser').save().then(() => {
             this.transitionTo('login');
           });
         });
